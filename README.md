@@ -1,7 +1,13 @@
-Role Name
+ansible-role-telegraf
 =========
 
-A brief description of the role goes here.
+An ansible role that installs telegraf on CentOS/RHEL OS according to what service you need to monitor:
+    
+    Services to monitor
+        - RHEL/CentOS OS 6,7,8
+        - PostgreSQL 12
+        - Haproxy
+        - Tomcat
 
 Requirements
 ------------
@@ -35,4 +41,5 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Fernando Rios 
+email: fer.rios.costa@gmail.com
