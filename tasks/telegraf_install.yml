@@ -1,0 +1,25 @@
+---
+- name: Copying telegraf rpm to destination host
+  copy:
+    src: "rpm/telegraf-1.16.1-1.x86_64.rpm"
+    dest: "/tmp/telegraf-1.16.1-1.x86_64.rpm"
+
+- name: Installing telegraf from rpm to host
+  yum:
+    name: /tmp/telegraf-1.16.1-1.x86_64.rpm
+    state: present
+
+- name: Copying telegraf configuration file to host
+  template:
+    src: etc/telegraf/telegraf.conf.j2
+    dest: /etc/telegraf/telegraf.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart telegraf
+
+- name: Start and enable telegraf service in the host
+  service:
+    name: telegraf
+    state: started
+    enabled: yes

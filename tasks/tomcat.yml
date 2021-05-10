@@ -1,0 +1,9 @@
+---
+- name: Copying /etc/telegraf/telegraf.d/tomcat.conf file
+  template:
+    src: etc/telegraf/telegraf.d/tomcat.conf.j2
+    dest: /etc/telegraf/telegraf.d/tomcat.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart telegraf

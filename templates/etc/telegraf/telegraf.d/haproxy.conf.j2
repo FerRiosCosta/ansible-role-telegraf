@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+[[inputs.haproxy]]
+  servers = ["socket:{{ haproxy_socket }}"]
+  interval = "60s"
+
+[[inputs.procstat]]
+  user = "{{ haproxy_user }}"
+  interval = "60s"
+

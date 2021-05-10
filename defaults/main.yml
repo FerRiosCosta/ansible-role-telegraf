@@ -1,0 +1,3 @@
+---
+haproxy_socket: /var/lib/haproxy/stats
+haproxy_user: haproxy

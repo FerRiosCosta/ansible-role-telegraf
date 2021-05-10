@@ -1,0 +1,11 @@
+---
+- name: Task for install telegraf with common settings
+  include_tasks: telegraf_install.yml
+
+- name: Tasks for install Tomcat server monitoring
+  include_tasks: tomcat.yml
+  when: "'tomcat' in group_names"
+
+- name: Tasks for install Postgresql monitoring
+  include_tasks: postgresql.yml
+  when: "'postgresql' in group_names"

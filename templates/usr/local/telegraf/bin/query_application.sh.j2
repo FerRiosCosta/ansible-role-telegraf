@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# {{ ansible_managed }}
+
+{% for db in dbs %}
+"/usr/local/telegraf/bin/files/query_application.py" "-u" "monitor" "-d" "{{ db.name }}" "-p" "{{ db.port }}"
+{% endfor %}
+

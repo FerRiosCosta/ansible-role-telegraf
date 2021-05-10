@@ -1,0 +1,22 @@
+# {{ ansible_managed }}
+
+[[inputs.procstat]]
+   user = "{{ user }}"
+   interval = "60s"
+
+[[inputs.exec]]
+   commands = ["/usr/local/telegraf/bin/postgresMetrics.sh"]
+   data_format = "influx"
+   interval = "60s"
+
+[[inputs.exec]]
+   commands = ["/usr/local/telegraf/bin/query_replication.sh"]
+   data_format = "influx"
+   timeout = "10s"
+   interval = "60s"
+
+[[inputs.exec]]
+   commands = ["/usr/local/telegraf/bin/query_application.sh"]
+   data_format = "influx"
+   timeout = "10s"
+   interval = "60s"

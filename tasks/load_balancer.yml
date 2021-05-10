@@ -1,0 +1,26 @@
+---
+- name: Appending the haproxy group to the telegraf's group
+  user:
+    name: telegraf
+    append: yes
+    groups: haproxy
+
+- name: Copying /etc/telegraf/telegraf.conf file
+  template:
+    src: etc/telegraf/telegraf.conf.j2
+    dest: /etc/telegraf/telegraf.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart telegraf
+
+- name: Copying /etc/telegraf/telegraf.d/haproxy.conf file
+  template:
+    src: etc/telegraf/telegraf.d/haproxy.conf.j2
+    dest: /etc/telegraf/telegraf.d/haproxy.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart telegraf
+
+

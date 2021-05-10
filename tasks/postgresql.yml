@@ -1,0 +1,91 @@
+---
+- name: Copying /etc/telegraf/telegraf.conf file
+  template:
+    src: etc/telegraf/telegraf.conf.j2
+    dest: /etc/telegraf/telegraf.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart telegraf
+
+- name: Copying /etc/telegraf/telegraf.d/postgresql.conf file
+  template:
+    src: etc/telegraf/telegraf.d/postgresql.conf.j2
+    dest: /etc/telegraf/telegraf.d/postgresql.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart telegraf
+
+- name: Creating /usr/local/telegraf/bin/files directory
+  file:
+    path: /usr/local/telegraf/bin/files
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+
+- name: Copying /usr/local/telegraf/bin/postgresMetrics.sh file
+  template:
+    src: usr/local/telegraf/bin/postgresMetrics.sh.j2
+    dest: /usr/local/telegraf/bin/postgresMetrics.sh
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copying /usr/local/telegraf/bin/files/postgresMetrics.py file
+  copy:
+    src: usr/local/telegraf/bin/files/postgresMetrics.py
+    dest: /usr/local/telegraf/bin/files/postgresMetrics.py
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copying /usr/local/telegraf/bin/query_replication.sh file
+  template:
+    src: usr/local/telegraf/bin/query_replication.sh.j2
+    dest: /usr/local/telegraf/bin/query_replication.sh
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copying /usr/local/telegraf/bin/files/query_replication.py file
+  copy:
+    src: usr/local/telegraf/bin/files/query_replication.py
+    dest: /usr/local/telegraf/bin/files/query_replication.py
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copying /usr/local/telegraf/bin/query_replication.sh file
+  template:
+    src: usr/local/telegraf/bin/query_replication.sh.j2
+    dest: /usr/local/telegraf/bin/query_replication.sh
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copying /usr/local/telegraf/bin/files/query_replication.py file
+  copy:
+    src: usr/local/telegraf/bin/files/query_replication.py
+    dest: /usr/local/telegraf/bin/files/query_replication.py
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copying /usr/local/telegraf/bin/query_application.sh file
+  template:
+    src: usr/local/telegraf/bin/query_application.sh.j2
+    dest: /usr/local/telegraf/bin/query_application.sh
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Copying /usr/local/telegraf/bin/files/query_application.py file
+  copy:
+    src: usr/local/telegraf/bin/files/query_application.py
+    dest: /usr/local/telegraf/bin/files/query_application.py
+    owner: root
+    group: root
+    mode: 0755
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# {{ ansible_managed }}
+
+{% for db in dbs %}
+"/usr/local/telegraf/bin/files/postgresMetrics.py" "-u" "monitor" "-d" "{{ db.name }}" "-p" "{{ db.port }}"
+{% endfor %}
